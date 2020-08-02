@@ -79,11 +79,8 @@ The interactive plot allows for varying τ, η, α, γ, t_0, and c_1. Data from 
 ![picture](images/michiganIHMEdata.png)
 **Figure 6**: Michigan dataset showing epidemeological and hospital data. 
 
-![picture](images/mixingdomainSIRnodelayfigure.png)
-**Figure 7**: Mixing-domain SIR model with homogeneous population and immediate quarentine (best-case scenario).
-
 ![picture](images/mixingdomainSIRfigure.png)
-**Figure 8**: Mixing-domain SIR model with delay for quarentine.
+**Figure 7**: Mixing-domain SIR model with delay for quarentine.
 
 ![picture](images/mixingdomainSIRandMI.png)
 **Figure 8**: Comparison between parameter-optimized mixing-domain SIR with and Michigan IHME data.
@@ -128,5 +125,8 @@ Fang, Y. Nie, Y., Penny, M., 2020. Transmission dynamics of the COVID-19 outbrea
 **Phase Portrait of Optimized SIR**: Shows the progression of the pandemic through state space. If β>γ, dynamics are representative of a stable attractor with the entire population evenually becoming infected and recovered. If latency, seasonality, and data collection time-delay were taken into account (as suggested in *Future Directions*), the dynamics would be vastly different, where periodicity and non-linear behavior would lead to oscillations and chaotic behavior. 
 ![picture](images/phaseportrait_supplemental.png)
 
+
+**Mixing-domain SIR model with homogeneous population and immediate quarentine (best-case scenario)**
+![picture](images/mixingdomainSIRnodelayfigure.png)
 
 
