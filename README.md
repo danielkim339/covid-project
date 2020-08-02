@@ -76,6 +76,17 @@ To represent these measures, we use the mixing-domain SIR model, which incorpora
 The interactive plot allows for varying τ, η, α, γ, t_0, and c_1. Data from the Institute for Health Metrics and Evaluation (IHME 2020) was used to optimize parameter values for curve fitting. From the results, the portion of the population traveling to different domains, α, has the largest impact on the spread of the disease. An α value of 0.0022 matches the mean number of infection data from IHME and just a 4.5% increase (+0.0001) brings the mixing-domain SIR projection outside of the upper range of uncertainty for the number of infections.  
 
 
+![picture](images/michiganIHMEdata.png)
+**Figure 6**: Michigan dataset showing epidemeological and hospital data. 
+
+**Figure 7**: Mixing-domain SIR model with homogeneous population and immediate quarentine (best-case scenario).
+
+![picture](images/mixingdomainSIRfigure.png)
+**Figure 8**: Mixing-domain SIR model with delay for quarentine.
+
+![picture](images/mixingdomainSIRandMI.png)
+**Figure 8**: Comparison between parameter-optimized mixing-domain SIR with and Michigan IHME data.
+
 ## **3) Discussion**
 *Parameter Optimization Shows a Larger Negative Impact*. The initial parameters were estimated using data dating from late March to early April 2020, when social distancing first began. Using COVID-19 data, our parameter optimization determined that the initial parameters were more optimistic than what current data shows. The optimized parameters displayed larger disease spread that gives rise to a higher infection peak and a longer lasting infection tail. Initial parameters predicted an average recovery time T_i of 9 days and R_0 of 3.86. Optimized parameters predict a longer T_i of 13.5 days (γ = 0.0742) and R_0 of 5.36, indicating higher spread of infection per infected individual. Fitting Michigan’s data with the optimized parameters showed that without social distancing, Michigan’s peak infections would have resulted in half of the state’s population becoming infected. This indicates that social distancing has been effective in preventing many infections and deaths.
 
@@ -109,12 +120,12 @@ Fang, Y. Nie, Y., Penny, M., 2020. Transmission dynamics of the COVID-19 outbrea
 ## **Suplemental Figures**
 
 **Ground Data from Michigan, California, and Illinois**: Used Michigan data to fit data and project the outcome if quarentine was not implemented since it had the most complete data set, especially when looking at recovered numbers. "Michigan Cumulative data" was converted to "Michigan SIR data" for curve fitting. 
-
+![picture](images/statedatacompare.png)
+![picture](images/michiganIHMEcumulativeandSIR.png)
 
 
 **Phase Portrait of Optimized SIR**: Shows the progression of the pandemic through state space. If β>γ, dynamics are representative of a stable attractor with the entire population evenually becoming infected and recovered. If latency, seasonality, and data collection time-delay were taken into account (as suggested in *Future Directions*), the dynamics would be vastly different, where periodicity and non-linear behavior would lead to oscillations and chaotic behavior. 
-
-
+![picture](images/phaseportrait_supplemental.png)
 
 
 
