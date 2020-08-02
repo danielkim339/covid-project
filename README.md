@@ -3,6 +3,7 @@ Author: Daniel Kim
 
 ***Abstract***: After two full months in effect, social distancing measures for COVID-19 have begun to relax across the United States. With each state differing on timelines and standards for reopening, it is important to quantify the effect preventive measures have had on disease containment, as well as modeling different reopening scenarios. This study explores the use of SIR, Cellular Automata, and Mixing-Domain models to represent disease dynamics using recent COVID-19 data. The results of this study show that following all of the different preventive measures available is necessary for fighting the spread of the disease. Choosing to adhere to some, such as wearing a mask but not others, such as staying at home, ultimately results in a net negative effect because the fraction of the population interacting with one another increases, which is the main driver for disease propagation.
 
+
 ## **1) Introduction** 
 
 With the number of confirmed US cases and deaths reaching 2,000,000 and 123,000 as of June 11 (COVID-19 Map 2020), the impact of the current pandemic has been felt across the entire world. COVID-19 was officially declared a pandemic on March 11, 2020 (CDC 2020). Social distancing measures were implemented across the US in April to help curb the spread of the disease. As of June 2020, these measures have begun to relax in part due to economic reopening procedures in local governments as well as frustration from people. With numerous government policies that were enacted months ago still remaining, many individuals who initially were skeptical about stay at home orders have felt that these policies have become drawn out. A growing number of the population have begun to more freely leave their homes, believing that the worst days are behind us and the government projections are not to be trusted since they are far off from the current numbers. It is therefore crucial to understand the impact social distancing measures have had on containing disease propagation, as well as explore the effects of different variables upon these measures to better predict what lies ahead as the country begins to reopen.
@@ -12,24 +13,10 @@ Models for disease transmission come in three major forms: population-based, age
 In this study,  we use the three different model types to provide insight into COVID-19 social distancing numbers and modeling parameters. We first recapitulate the population-based SIR model from Yang, et al and expand upon the study by optimizing the parameters based on current COVID-19 data. We then use a Cellular Automata (CA) as an Agent-Based method to visualize the population based model and depict the effects of optimizing parameters. Lastly, we produce two mixing-domain models. Our first mixing-domain model assumes perfect mixing to represent what would occur if there was a lack of tests, contact tracing, and isolation of infected individuals. Our second mixing-domain model includes a time-delay parameter to show the outcomes based on if people immediately follow stay at home orders versus if people lag.
 
 
-
 ## **2) Methods & Results**
 
 ### 2.1 Optimizing SIR Model's Parameter Set to Match Ground Data
 *Simple SIR*: This compartmental model divides the total population into susceptible, infected, and removed individuals. The SIR model is the most common and simple form. Several variations have been made to focus on the different aspects of transmission, but the standard model we implemented was the Simple SIR. Values for the optimized parameters were taken from Fang et al. from the Journal of Medical Virology. 
-
-$$\frac{dS}{dt}=-\beta\frac{S}{N}I$$
-$$\frac{dI}{dt}=\beta\frac{S}{N}I-I\gamma$$
-$$\frac{dR}{dt}=I\gamma$$
-
-*Parameters*:
-- Coefficient of infection rate:  $\beta = \beta_{0} k = 1$
-- Probability of infection per exposure: $\beta_{0}$
-- Frequency of exposure:  $k$
-- Coefficient of migration rate of latency: $\omega = \frac{1}{T_{e}}$  
-- Average latency: $T_{e}$
-- Coefficient of migration rate: $\gamma = \frac{1}{T_{i}}$ 
-- Average recovery time: $T_{i}$
 
 ![picture](images/simpleSIR.png)
 
@@ -73,32 +60,10 @@ The next two models serve as an education tool. They show the public the impact 
 Mesoscopic models fall between the agent and population models. They build upon population models by subdividing compartments into separate demographics (i.e. age, employment, location, etc.), and specify domains where individuals congregate to more accurately represent the impact of interaction. 
 To represent these measures, we use the mixing-domain SIR model, which incorporates the mixing-theorem into the SIR model (Yang et al. 2020). Mixing domains represent locations where individuals may interact: retail and recreation, grocery and pharmacy, parks, transit stations, workplaces, and residential. Compartments are subdivided into age groups. Our first mixing-domain model assumes perfect mixing to represent what would occur if there was a lack of tests, contact tracing, and isolation of infected individuals. Our second mixing-domain model includes a time-delay parameter to show the outcomes based on if people immediately follow stay at home orders versus if people lag.
 
-**Mixing-domain SIR for homogeneous population**:
-$$\frac{dS}{dt} = −\tau_{eq}SI$$
-$$\frac{dI}{dt} = \tau_{eq}SI − \gamma I$$
-$$\frac{dR}{dt} = \gamma I$$
-
-Parameters:
-- Equivalent overall transmissibility: $\tau_{eq} = \sum \tau_{i} * \eta_{i} * \alpha_{i}^{2}$
-- $\tau_{i}$  = transmission probability per encounter
-- $\eta_{i}$  = avg time in domain i
-- $\alpha_{i}$ = average occupancy of domain i (normalized to population size)
-
-**Mixing-domain SIR w/ social distancing time-delay**:
-$$\frac{dS}{dt} = −\tau_{eq}f(t)SI$$
-$$\frac{dI}{dt} = \tau_{eq}f(t)SI − \gamma I$$
-$$\frac{dR}{dt} = \gamma I$$
-
-Parameters:
-- Equivalent overall transmissibility: $\tau_{eq} = \sum_{i=1}^{n} \sum_{j \in G}^{n} f_{ij} \tau_{ij} \eta_{ij} \alpha_{ij}^{2}$
-- Equivalent overall transmissibility during quarantine: $\tau_{eq}^{'} = \sum_{i=1}^{n} \tau_{i}^{'} \eta_{i}^{'} \alpha_{i}^{'2}$
-- $\tau_{0}$ = number of days between the first infection and when quarantine is implemented 
-- $c_{1}$ = number of interactions per person 
-- $\alpha_{i}^{'}$ and $\eta_{i}^{'}$ = fractional amount of time and occupancy of domain after quarantine
-
 ![picture](images/mixingdomainSIR.png)
 
 The interactive plot allows for varying τ, η, α, γ, t_0, and c_1. Data from the Institute for Health Metrics and Evaluation (IHME 2020) was used to optimize parameter values for curve fitting. From the results, the portion of the population traveling to different domains, α, has the largest impact on the spread of the disease. An α value of 0.0022 matches the mean number of infection data from IHME and just a 4.5% increase (+0.0001) brings the mixing-domain SIR projection outside of the upper range of uncertainty for the number of infections.  
+
 
 ## **3) Discussion**
 *Parameter Optimization Shows a Larger Negative Impact*. The initial parameters were estimated using data dating from late March to early April 2020, when social distancing first began. Using COVID-19 data, our parameter optimization determined that the initial parameters were more optimistic than what current data shows. The optimized parameters displayed larger disease spread that gives rise to a higher infection peak and a longer lasting infection tail. Initial parameters predicted an average recovery time T_i of 9 days and R_0 of 3.86. Optimized parameters predict a longer T_i of 13.5 days (γ = 0.0742) and R_0 of 5.36, indicating higher spread of infection per infected individual. Fitting Michigan’s data with the optimized parameters showed that without social distancing, Michigan’s peak infections would have resulted in half of the state’s population becoming infected. This indicates that social distancing has been effective in preventing many infections and deaths.
