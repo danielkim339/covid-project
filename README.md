@@ -79,6 +79,7 @@ The interactive plot allows for varying τ, η, α, γ, t_0, and c_1. Data from 
 ![picture](images/michiganIHMEdata.png)
 **Figure 6**: Michigan dataset showing epidemeological and hospital data. 
 
+![picture](images/mixingdomainSIRnodelayfigure.png)
 **Figure 7**: Mixing-domain SIR model with homogeneous population and immediate quarentine (best-case scenario).
 
 ![picture](images/mixingdomainSIRfigure.png)
