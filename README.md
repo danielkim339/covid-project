@@ -20,8 +20,15 @@ In this study,  we use the three different model types to provide insight into C
 
 ![picture](images/simpleSIR.png)
 
+![picture](images/simpleSIRfigure1.png)
+
 *Curve fitting for Parameter Optimization*: Once all the models were constructed, we performed parameter optimization to better represent and more accurately predict the transmission dynamics. The initial parameter values were estimated using interactive widgets (see code). Then, curve optimization of the simple SIR with these initial parameters was conducted via non-linear least squares fitting. Data was sourced from the COVID Tracking Project’s open source Github page (COVID Tracking Project 2020).  The resulting optimized parameters were β of 0.392 and γ of 0.0742. These correspond to an average recovery time T_i of 13.5 days and a basic reproductive number R_0 of 5.36. This parameter set was inputted into the SIR model and projected out from March 3 to May 1 to compare the optimized model to Michigan’s pre-quarantine data. 
+
+![picture](images/parameteroptimizationfigure2.png)
+
 Next, the outcome if no quarantine was enacted was projected for Michigan, assuming the same 9.5% fatality rate (calculated from the data’s deaths and confirmed cases). Michigan data was used since it had the highest fatality rate in the country as of May 1. Although the resulting value is skewed due to the lack of early testing, the projected number of fatalities was 94,000 and the peak number of infections was 4.9 million.
+
+![picture](images/michiganprojectionsfigure3.png)
 
 ### 2.2 Cellular Automata Models to Visualize Disease Spread Dynamics   
 
@@ -54,6 +61,10 @@ The public domain starts off with 25 empty cells, to be occupied by one individu
 5. Public Domain - To simulate the need to get groceries during social distancing, at every other time step  , one random cell from each universe moves into the public domain. An empty space occupies their location in their universe. Once in the public domain, they interact and update their state. At the next time step, they return to their universe, interact, and update their state.
 
 *CA Simulations*: Simulations were ran over 30 generations using: (1) initial estimates of β and γ values from the SEIR and SIR models before and (2) optimized β and γ values for the SIR model fitted to current ground data (refer to *Curve fitting for Parameter Optimization*). Results from initial estimated parameters are shown in Figure 4. Results from optimized parameters are shown in Figure 5. When comparing the results between the different parameters, the simulation with the initial estimate parameters reaches high infectivity numbers more quickly than the simulation with optimized parameters. Social distancing has a positive effect on mitigating the spread of the disease, though interaction within one’s own community as well as in the public domain ensures growth of infection numbers.
+
+![picture](images/initialCAfigure4.png)
+
+![picture](images/optimizedCAfigure5.png)
 
 ### 2.3 Mixing-Domain SIR 
 The next two models serve as an education tool. They show the public the impact proper social distancing can have on mitigating the pandemic’s negative impact. This section focuses on qualitative results, attempting to find which parameters can be controlled to minimize impact and how it translates to public behavior.
