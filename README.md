@@ -17,6 +17,7 @@ In this study,  we use the three different model types to provide insight into C
 
 ### 2.1 Optimizing SIR Model's Parameter Set to Match Ground Data
 *Simple SIR*: This compartmental model divides the total population into susceptible, infected, and removed individuals. The SIR model is the most common and simple form. Several variations have been made to focus on the different aspects of transmission, but the standard model we implemented was the Simple SIR. Values for the optimized parameters were taken from Fang et al. from the Journal of Medical Virology. 
+
 $$\frac{dS}{dt}=-\beta\frac{S}{N}I$$
 $$\frac{dI}{dt}=\beta\frac{S}{N}I-I\gamma$$
 $$\frac{dR}{dt}=I\gamma$$
@@ -29,6 +30,8 @@ $$\frac{dR}{dt}=I\gamma$$
 - Average latency: $T_{e}$
 - Coefficient of migration rate: $\gamma = \frac{1}{T_{i}}$ 
 - Average recovery time: $T_{i}$
+
+![picture](images/simpleSIR.png)
 
 *Curve fitting for Parameter Optimization*: Once all the models were constructed, we performed parameter optimization to better represent and more accurately predict the transmission dynamics. The initial parameter values were estimated using interactive widgets (see code). Then, curve optimization of the simple SIR with these initial parameters was conducted via non-linear least squares fitting. Data was sourced from the COVID Tracking Project’s open source Github page (COVID Tracking Project 2020).  The resulting optimized parameters were β of 0.392 and γ of 0.0742. These correspond to an average recovery time T_i of 13.5 days and a basic reproductive number R_0 of 5.36. This parameter set was inputted into the SIR model and projected out from March 3 to May 1 to compare the optimized model to Michigan’s pre-quarantine data. 
 Next, the outcome if no quarantine was enacted was projected for Michigan, assuming the same 9.5% fatality rate (calculated from the data’s deaths and confirmed cases). Michigan data was used since it had the highest fatality rate in the country as of May 1. Although the resulting value is skewed due to the lack of early testing, the projected number of fatalities was 94,000 and the peak number of infections was 4.9 million.
@@ -92,6 +95,8 @@ Parameters:
 - $\tau_{0}$ = number of days between the first infection and when quarantine is implemented 
 - $c_{1}$ = number of interactions per person 
 - $\alpha_{i}^{'}$ and $\eta_{i}^{'}$ = fractional amount of time and occupancy of domain after quarantine
+
+![picture](images/mixingdomainSIR.png)
 
 The interactive plot allows for varying τ, η, α, γ, t_0, and c_1. Data from the Institute for Health Metrics and Evaluation (IHME 2020) was used to optimize parameter values for curve fitting. From the results, the portion of the population traveling to different domains, α, has the largest impact on the spread of the disease. An α value of 0.0022 matches the mean number of infection data from IHME and just a 4.5% increase (+0.0001) brings the mixing-domain SIR projection outside of the upper range of uncertainty for the number of infections.  
 
