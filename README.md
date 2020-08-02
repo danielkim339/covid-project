@@ -106,3 +106,15 @@ COVID Tracking Project. 2020. covid-tracking-data/data/states_daily_4pm. https:/
 Fang, Y. Nie, Y., Penny, M., 2020. Transmission dynamics of the COVID-19 outbreak and effectiveness of government interventions: A data-driven analysis. Journal of Medical Virology, 25 February 2020, DOI: 10.1002/jmv.25750
 
 
+## **Suplemental Figures**
+
+**Ground Data from Michigan, California, and Illinois**: Used Michigan data to fit data and project the outcome if quarentine was not implemented since it had the most complete data set, especially when looking at recovered numbers. "Michigan Cumulative data" was converted to "Michigan SIR data" for curve fitting. 
+
+
+
+**Phase Portrait of Optimized SIR**: Shows the progression of the pandemic through state space. If β>γ, dynamics are representative of a stable attractor with the entire population evenually becoming infected and recovered. If latency, seasonality, and data collection time-delay were taken into account (as suggested in *Future Directions*), the dynamics would be vastly different, where periodicity and non-linear behavior would lead to oscillations and chaotic behavior. 
+
+
+
+
+
